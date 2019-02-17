@@ -21,6 +21,7 @@ now we need add all dockker in this network
 	```
 	docker run --rm --network sambanet --name ldap --hostname ldap -d parveen1992/ldap
 	```
+
 ```
 	[root@localhost practica]# ldapsearch -x -LLL -h 172.20.0.2 -b dc=edt,dc=org 'ou=grups'
 	dn: ou=grups,dc=edt,dc=org
@@ -41,11 +42,14 @@ now we need add all dockker in this network
 	* now start server (smbd,nmbd).
 	This one my server to user
 	
+
 	```
 	docker run --rm --network sambanet --name samba --hostname samba -it parveen1992/sambahome
 	```
-	** check this **
+
+** check this **
 	
+
 ```
 	[root@samba docker]# getent passwd pere
 	pere:*:5001:100:Pere Pou:/tmp/home/pere:
@@ -95,12 +99,13 @@ now we need add all dockker in this network
 	* Start server to connect ldap server(nscd,nslcd).
 	This my PamHost is
 	
-	```
+```
 		docker run --rm --network sambanet --privileged --name client  --hostname client -it parveen1992/hostmountsamba
-	```
-	** check this ** 
+```
 	
-	```
+** check this ** 
+	
+```
 	[root@client docker]# getent passwd pere
 	pere:*:5001:100:Pere Pou:/tmp/home/pere:
 
@@ -123,7 +128,7 @@ now we need add all dockker in this network
 
 	Dockerfile  auth.sh     ldap.conf   nsswitch.conf  startup.sh
 	README.md   install.sh  nslcd.conf  smb.conf
-	```	
+```	
 
 
 
