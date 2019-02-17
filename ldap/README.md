@@ -129,11 +129,11 @@ docker run --rm --network sambanet --privileged --name client  --hostname client
 
 ### Dockerhub repo. links
 
-[Docker Parveen ldap](https://cloud.docker.com/u/parveen1992/repository/docker/parveen1992/ldap)
+[Docker Parveen ldap](https://hub.docker.com/r/parveen1992/ldap)
 
-[Docker parveen sambahome](https://cloud.docker.com/u/parveen1992/repository/docker/parveen1992/sambahome)
+[Docker parveen sambahome](https://hub.docker.com/r/parveen1992/sambahome)
 
-[Docker Parveen hostmountsamba](https://cloud.docker.com/u/parveen1992/repository/docker/parveen1992/hostmountsamba)
+[Docker Parveen hostmountsamba](https://hub.docker.com/r/parveen1992/hostmountsamba)
 
 ### All to start
 
