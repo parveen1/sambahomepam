@@ -12,18 +12,15 @@ Practica with ldap,pam_host and samba.Main to config. of samba server.
 Make samba network to put togather from exemple name by (sambanet)
 now we need add all dockker in this network
 
-## 1 Ldap Server
+##1 Ldap Server
 	* Dockerfile need to edit some pacquetes  (procps openldap-clients openldap-servers)
 	* Put database edt.org also new group and manager as admin
 	* Turn on server slpad	
 	This one my server from use
 	
-	```
-	docker run --rm --network sambanet --name ldap --hostname ldap -d parveen1992/ldap
-	```
-
-** check this **
-
+```
+docker run --rm --network sambanet --name ldap --hostname ldap -d parveen1992/ldap
+```
 
 ```
 	[root@localhost practica]# ldapsearch -x -LLL -h 172.20.0.2 -b dc=edt,dc=org 'ou=grups'
@@ -34,7 +31,7 @@ now we need add all dockker in this network
 	objectClass: organizationalunit
 ```
 
-## 2 samba Server
+##2 samba Server
 	
 	* Docker line need add more packets  (procps samba samba-client openldap-clients nss-pam-ldapd authconfig pam_mount).
 	* Make smb.conf file 
@@ -45,21 +42,17 @@ now we need add all dockker in this network
 	* now start server (smbd,nmbd).
 	This one my server to user
 	
-
-	```
-	docker run --rm --network sambanet --name samba --hostname samba -it parveen1992/sambahome
-	```
+```
+docker run --rm --network sambanet --name samba --hostname samba -it parveen1992/sambahome
+```
 
 ** check this **
 	
-
 ```
 	[root@samba docker]# getent passwd pere
 	pere:*:5001:100:Pere Pou:/tmp/home/pere:
-
 	[root@samba docker]# getent group 1asix
 	1asix:*:610:user01,user02,user03,user04,user05
-
 	[root@samba docker]# smbtree         
 	MYGROUP
 		\\SAMBA          		Samba Server Version 4.7.10
@@ -67,11 +60,9 @@ now we need add all dockker in this network
 			\\SAMBA\public         	Share de contingut public
 			\\SAMBA\manpages       	Documentació man del container
 			\\SAMBA\documentation  	Documentació doc del container
-
 	[root@samba docker]# smbclient -L samba
 	Enter MYGROUP\GUEST's password: 
 	Anonymous login successful
-
 		Sharename       Type      Comment
 		---------       ----      -------
 		documentation   Disk      Documentació doc del container
@@ -80,17 +71,15 @@ now we need add all dockker in this network
 		IPC$            IPC       IPC Service (Samba Server Version 4.7.10)
 	Reconnecting with SMB1 for workgroup listing.
 	Anonymous login successful
-
 		Server               Comment
 		---------            -------
-
 		Workgroup            Master
 		---------            -------
 		MYGROUP              SAMBA
 ```
 
 
-## 3 Pamhost or cliente
+##3 Pamhost or cliente
 	
 	* Docker line need add more packets (procps passwd openldap-clients nss-pam-ldapd authconfig pam_mount cifs-utils samba-client)
 	* Make confgure file for ldapserver connection (nsswitch.conf).
@@ -101,9 +90,9 @@ now we need add all dockker in this network
 	This my PamHost is
 	
 ```
-		docker run --rm --network sambanet --privileged --name client  --hostname client -it parveen1992/hostmountsamba
+docker run --rm --network sambanet --privileged --name client  --hostname client -it parveen1992/hostmountsamba
 ```
-	
+
 ** check this ** 
 	
 ```
@@ -133,9 +122,15 @@ now we need add all dockker in this network
 
 
 
-### Github rep. with all of images file we need conf.(or your castom conf.). 
+### Github repo. with all of images file we need conf.(or your castom conf.). 
 
-[github Parveen](https://github.com/parveen1/sambahomepam)
+[Github Parveen](https://github.com/parveen1/sambahomepam)
+
+
+### Dockerhub repo. links
+[Docker Parveen ldap](https://cloud.docker.com/u/parveen1992/repository/docker/parveen1992/ldap)
+[Docker parveen sambahome](https://cloud.docker.com/u/parveen1992/repository/docker/parveen1992/sambahome)
+[Docker Parveen hostmountsamba](https://cloud.docker.com/u/parveen1992/repository/docker/parveen1992/hostmountsamba)
 
 ### All to start
 
