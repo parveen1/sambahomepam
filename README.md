@@ -12,7 +12,7 @@ Practica with ldap,pam_host and samba.Main to config. of samba server.
 Make samba network to put togather from exemple name by (sambanet)
 now we need add all dockker in this network
 
-##1 Ldap Server
+## 1 Ldap Server
 	* Dockerfile need to edit some pacquetes  (procps openldap-clients openldap-servers)
 	* Put database edt.org also new group and manager as admin
 	* Turn on server slpad	
@@ -31,7 +31,7 @@ docker run --rm --network sambanet --name ldap --hostname ldap -d parveen1992/ld
 	objectClass: organizationalunit
 ```
 
-##2 samba Server
+## 2 samba Server
 	
 	* Docker line need add more packets  (procps samba samba-client openldap-clients nss-pam-ldapd authconfig pam_mount).
 	* Make smb.conf file 
@@ -138,9 +138,9 @@ docker run --rm --network sambanet --privileged --name client  --hostname client
 ### All to start
 
 ```
-docker run --rm --network sambanet --name ldap --hostname ldap -d parveeen1992/ldap
+docker run --rm --network sambanet --name ldap --hostname ldap -d parveen1992/ldap
 docker run --rm --network sambanet --name samba --hostname samba -it parveen1992/sambahome
-docker run --rm --network sambanet --privileged --name client  -hostname client -it parveen1992/hostmountsamba 
+docker run --rm --network sambanet --privileged --name client --hostname client -it parveen1992/hostmountsamba 
 ```
 
 ### Check this order after strat to verify
