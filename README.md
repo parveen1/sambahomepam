@@ -17,6 +17,7 @@ now we need add all dockker in this network
 * Dockerfile need to edit some pacquetes  (procps openldap-clients openldap-servers)
 * Put database edt.org also new group and manager as admin
 * Turn on server slpad	
+
 This one my server from use
 	
 ```
@@ -42,6 +43,7 @@ objectClass: organizationalunit
 * After connect server we need samba user this all user local and ldap can server for with sbmpassword.
 * mkdir for every user and import give own premission.
 * now start server (smbd,nmbd).
+
 This one my server to user
 	
 ```
@@ -89,6 +91,7 @@ Anonymous login successful
 * make file auto mount home for user by edit file (/etc/security/pam_mount.conf.xml).
 * Conf. line in xml file ( <volume user="*" fstype="cifs" server="samba" path="%(USER)" mountpoint="~/%(USER)" /> )
 * Start server to connect ldap server(nscd,nslcd).
+
 This my PamHost is
 	
 ```
