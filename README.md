@@ -21,6 +21,7 @@ now we need add all dockker in this network
 ```
 docker run --rm --network sambanet --name ldap --hostname ldap -d parveen1992/ldap
 ```
+**cheak point**
 
 ```
 	[root@localhost practica]# ldapsearch -x -LLL -h 172.20.0.2 -b dc=edt,dc=org 'ou=grups'
@@ -46,7 +47,7 @@ docker run --rm --network sambanet --name ldap --hostname ldap -d parveen1992/ld
 docker run --rm --network sambanet --name samba --hostname samba -it parveen1992/sambahome
 ```
 
-** check this **
+**check this**
 	
 ```
 	[root@samba docker]# getent passwd pere
@@ -79,7 +80,7 @@ docker run --rm --network sambanet --name samba --hostname samba -it parveen1992
 ```
 
 
-##3 Pamhost or cliente
+## 3 Pamhost or cliente
 	
 	* Docker line need add more packets (procps passwd openldap-clients nss-pam-ldapd authconfig pam_mount cifs-utils samba-client)
 	* Make confgure file for ldapserver connection (nsswitch.conf).
@@ -93,7 +94,7 @@ docker run --rm --network sambanet --name samba --hostname samba -it parveen1992
 docker run --rm --network sambanet --privileged --name client  --hostname client -it parveen1992/hostmountsamba
 ```
 
-** check this ** 
+**check this** 
 	
 ```
 	[root@client docker]# getent passwd pere
